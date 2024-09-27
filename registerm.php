@@ -1,0 +1,14 @@
+<?php
+require 'database.php';
+$username = $_POST["ussername"];
+$email = $_POST["email"];
+$password = $_POST["password"];
+
+$query_sql = "INSERT INTO tbl_users (ussername,  email, password) 
+            VALUES ('$username', '$email', '$password')";
+
+if (mysqli_query($conn, $query_sql)) {
+    header("Location: index.html");
+} else {
+    echo "Pendaftaran Gagal : " . mysqli_error($conn);
+}
